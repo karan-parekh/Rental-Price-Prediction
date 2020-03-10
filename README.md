@@ -1,2 +1,2 @@
-# Titanic
-Survivor's Prediction using the Titanic Dataset
+# Rental Price Prediction
+## The dataset describes the listing activity and metrics in New York State
