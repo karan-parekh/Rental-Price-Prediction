@@ -10,6 +10,12 @@ __pycache__/
 .vscode
 .idea
 
+# jupyter
+.ipynb_checkpoints
+
+#zip files
+*.zip
+
 # sandbox
 sandbox.py
 
