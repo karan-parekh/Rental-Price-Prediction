@@ -201,29 +201,27 @@ def run_classification_models(X, y, models: Optional[dict], test_size=0.3, rando
     auc_scores = {}
 
     for model_name, model_obj in classification_models.items():
-        print('Classification Metrics for {}:\n'.format(model_name))
         auc_scores[model_name] = run_model(model_obj)
 
     return auc_scores
 
 
-def one_hot_encode(df: pd.DataFrame) -> pd.DataFrame:
+def one_hot_encode(df: pd.DataFrame, columns=[]) -> pd.DataFrame:
 
-    cols = get_numerical_df(df).columns
-    encoder = OneHotEncoder()
+    if not columns:
+        columns = get_categorical_df(df).columns
 
-    for col in cols:
-        df[col] = encoder.fit_transform(df[col])
-
-    return df
+    return pd.get_dummies(df, columns=columns)
 
 
-def label_encode(df: pd.DataFrame) -> pd.DataFrame:
+def label_encode(df: pd.DataFrame, columns=[]) -> pd.DataFrame:
 
-    cols = get_categorical_df(df).columns
+    if not columns:
+        columns = get_categorical_df(df).columns
+    
     encoder = LabelEncoder()
 
-    for col in cols:
+    for col in columns:
         df[col] = encoder.fit_transform(df[col])
 
     return df
