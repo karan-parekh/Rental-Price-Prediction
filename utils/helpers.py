@@ -28,6 +28,13 @@ def get_numerical_df(df: pd.DataFrame) -> pd.DataFrame:
     return df[num_columns]
 
 
+def missing_values_counts(df: pd.DataFrame) -> pd.Series:
+    """Returns a Series of """
+
+    counts = df.isnull().sum()
+    return counts
+
+
 def missing_values_percent(df: pd.DataFrame) -> pd.Series:
     """Returns a Series of """
 
@@ -227,16 +234,15 @@ def label_encode(df: pd.DataFrame, columns=[]) -> pd.DataFrame:
     return df
 
 
-
-def run_regression_models(X, y, models: Optional[dict], k=3, test_size=0.3, random_state=42) -> dict:
+def run_regression_models(X, y, models=None, k=3, test_size=0.3, random_state=42) -> dict:
 
     regression_models = {
         'Linear Regression' : LinearRegression,
         'Ridge'             : Ridge,
         'Lasso'             : Lasso,
-        'Decision Tree'     : DecisionTreeRegressor,
-        'Random Forest'     : RandomForestRegressor,
-        'SVR'               : SVR,
+        # 'Decision Tree'     : DecisionTreeRegressor,
+        # 'Random Forest'     : RandomForestRegressor,
+        # 'SVR'               : SVR,
         # 'XGBoost'           : XGBRegressor
     }
 
