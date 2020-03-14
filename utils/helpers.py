@@ -234,7 +234,7 @@ def label_encode(df: pd.DataFrame, columns=[]) -> pd.DataFrame:
     return df
 
 
-def run_regression_models(X, y, models=None, k=3, test_size=0.3, random_state=42) -> dict:
+def run_regression_models(X, y, models=None, scaler=None, test_size=0.3, random_state=42) -> dict:
 
     regression_models = {
         'Linear Regression' : LinearRegression,
@@ -252,6 +252,10 @@ def run_regression_models(X, y, models=None, k=3, test_size=0.3, random_state=42
     def run_model(name, model):
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state)
+
+        if scaler:
+            X_train = scaler.fit_transform(X_train)
+            X_test  = scaler.transform(X_test)
 
         model.fit(X_train, y_train)
         score = model.score(X_test, y_test)
