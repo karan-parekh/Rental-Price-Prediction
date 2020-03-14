@@ -18,3 +18,7 @@ def raw_data_path(filename):
 
 def processed_data_path(filename):
     return os.path.join(app_path(), 'data', 'processed', filename)
+
+
+def inter_data_path(filename):
+    return os.path.join(app_path(), 'data', 'inter', filename)
