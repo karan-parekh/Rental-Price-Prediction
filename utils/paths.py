@@ -1,4 +1,3 @@
-"""Functions return path to respective files"""
 import os
 
 
@@ -12,13 +11,13 @@ def app_path():
     return path
 
 
-def raw_data_path(filename):
+def raw_data_path(filename=''):
     return os.path.join(app_path(), 'data', 'raw', filename)
 
 
-def processed_data_path(filename):
+def processed_data_path(filename=''):
     return os.path.join(app_path(), 'data', 'processed', filename)
 
 
-def inter_data_path(filename):
+def inter_data_path(filename=''):
     return os.path.join(app_path(), 'data', 'inter', filename)
